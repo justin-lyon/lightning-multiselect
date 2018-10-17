@@ -3,6 +3,10 @@
 		helper.requestOptions(cmp, helper);
 	},
 
+	onValidate: function(cmp, event, helper) {
+		return helper.validate(cmp);
+	},
+
 	onKeydown: function(cmp, event, helper) {
 		var keyboard = {
 			40: helper.onDownArrow, // down,

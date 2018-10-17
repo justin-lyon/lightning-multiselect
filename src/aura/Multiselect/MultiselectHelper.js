@@ -145,7 +145,10 @@
 		var selections = cmp.get("v.selections");
 		var isRequired = cmp.get("v.required");
 
-		cmp.set("v.hasError", selections.length === 0 && isRequired);
+		var isValid = selections.length === 0 && isRequired
+		cmp.set("v.hasError", isValid);
+		cmp.set("v.validity", { valid: isValid });
+		return isValid;
 	},
 
 	requestOptions: function(cmp, helper) {

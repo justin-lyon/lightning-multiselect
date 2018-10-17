@@ -1,6 +1,8 @@
 <aura:component description="Multiselect"
 	controller="MultiselectAuraService" >
 
+	<aura:method name="showHelpMessageIfInvalid" action="{!c.onValidate}" />
+
 	<ltng:require scripts="{!join(',',
 			$Resource.LightningKit + '/js/promisify.js')}"
 		afterScriptsLoaded="{!c.init}" />
@@ -23,6 +25,7 @@
 
 	<aura:attribute name="isExpanded" type="Boolean" default="false" />
 	<aura:attribute name="hasError" type="Boolean" default="false" />
+	<aura:attribute name="validity" type="Object" default="{ valid: true }" />
 
 	<aura:attribute name="options" type="Object[]" default="[]" />
 	<aura:attribute name="selections" type="Object[]" default="[]" />
