@@ -14,6 +14,7 @@
 		description="The input element label." />
 	<aura:attribute name="value" type="String"
 		description="The bound field value." />
+	<aura:attribute name="required" type="Boolean" default="false" />
 
 	<aura:attribute name="placeholder" type="String" default="Select an Option"
 		description="Customize the input placeholder text." />
@@ -21,6 +22,7 @@
 		description="Hide the input label (optional)" />
 
 	<aura:attribute name="isExpanded" type="Boolean" default="false" />
+	<aura:attribute name="hasError" type="Boolean" default="false" />
 
 	<aura:attribute name="options" type="Object[]" default="[]" />
 	<aura:attribute name="selections" type="Object[]" default="[]" />
@@ -32,15 +34,19 @@
 	<aura:handler name="change" value="{!v.value}" action="{!c.onValueChange}" />
 
 	<div aura:id="localRoot"
-		class="{!'slds-form-element' + (v.labelHidden ? ' label-hidden' : '')}"
+		class="{!'slds-form-element' + (v.labelHidden ? ' label-hidden' : '') + (v.hasError ? ' slds-has-error' : '')}"
 		data-global-id="{!globalId}" >
 
 		<label class="slds-form-element__label"
 			for="{!globalId + '_comboboxInput'}">
+			<aura:if isTrue="{!v.required}">
+				<abbr class='slds-required' title="required">* </abbr>
+			</aura:if>
 			<ui:outputText value="{!v.label}" />
 		</label>
 		<div class="slds-form-element__control"
-			onkeydown="{!c.onKeydown}" >
+			onkeydown="{!c.onKeydown}"
+			onfocusout="{!c.onFocusout}" >
 			<div class="slds-combobox_container">
 				<div
 					class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
@@ -55,7 +61,9 @@
 							class="slds-input slds-combobox__input slds-combobox__input-value slds-truncate"
 							id="{!globalId + '_comboboxInput'}"
 							type="text"
+							required="{!v.required}"
 							aria-controls="{!globalId + '_listbox'}"
+							aria-describedby="{!globalId + '_help'}"
 							aria-activedescendant=""
 							autoComplete="off"
 							role="textbox"
@@ -102,5 +110,11 @@
 				</div>
 			</div>
 		</div>
+		<aura:if isTrue="{!v.hasError}">
+			<div class="slds-form-element__help"
+				id="{!globalId + '_help'}">
+				This field is required
+			</div>
+		</aura:if>
 	</div>
 </aura:component>

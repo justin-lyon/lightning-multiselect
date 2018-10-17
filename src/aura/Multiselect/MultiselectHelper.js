@@ -138,6 +138,14 @@
 
 		helper.setInputValue(cmp);
 		helper.setValue(cmp);
+		helper.validate(cmp);
+	},
+
+	validate: function(cmp) {
+		var selections = cmp.get("v.selections");
+		var isRequired = cmp.get("v.required");
+
+		cmp.set("v.hasError", selections.length === 0 && isRequired);
 	},
 
 	requestOptions: function(cmp, helper) {

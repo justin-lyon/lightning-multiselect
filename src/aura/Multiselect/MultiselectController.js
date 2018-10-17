@@ -17,6 +17,10 @@
 		}
 	},
 
+	onFocusout: function(cmp, event, helper) {
+		helper.validate(cmp);
+	},
+
 	onValueChange: function(cmp, event, helper) {
 		helper.syncOptions(cmp, helper);
 	},
