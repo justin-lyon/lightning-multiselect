@@ -21,6 +21,11 @@
 		}
 	},
 
+	onHover: function(cmp, event, helper) {
+		var option = event.getParams();
+		helper.assignActiveItem(cmp, option);
+	},
+
 	onFocusout: function(cmp, event, helper) {
 		helper.validate(cmp);
 	},

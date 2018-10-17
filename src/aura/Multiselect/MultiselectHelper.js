@@ -84,6 +84,22 @@
 		cmp.set("v.value", value);
 	},
 
+	assignActiveItem: function(cmp, option) {
+		var options = cmp.get("v.options");
+		var newOptions = options
+			.map(function(opt) {
+				opt.focused = opt.value === option.value;
+				return opt;
+			});
+
+		var activeIndex = newOptions.findIndex(function(opt) {
+			return opt.value === option.value;
+		});
+
+		cmp.set("v.options", newOptions);
+		cmp.set("v.activeItem", activeIndex);
+	},
+
 	cycleItems: function(cmp, previousIndex, nextIndex) {
 		var options = cmp.get("v.options");
 

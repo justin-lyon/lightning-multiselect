@@ -34,6 +34,7 @@
 
 	<aura:handler name="click" event="c:E_Option" action="{!c.handleOptionEvent}" />
 	<aura:handler name="remove" event="c:E_Option" action="{!c.handleOptionEvent}" />
+	<aura:handler name="hover" event="c:E_Option" action="{!c.onHover}" />
 	<aura:handler name="change" value="{!v.value}" action="{!c.onValueChange}" />
 
 	<div aura:id="localRoot"

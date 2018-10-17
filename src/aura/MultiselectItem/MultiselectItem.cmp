@@ -5,11 +5,13 @@
 	<aura:attribute required="true" name="value" type="String" />
 
 	<aura:registerEvent name="click" type="c:E_Option" />
+	<aura:registerEvent name="hover" type="c:E_Option" />
 
 	<li role="presentation"
 		class="slds-listbox__item"
 		aria-selected="{!v.isSelected}"
-		onclick="{!c.clickItem}">
+		onclick="{!c.clickItem}"
+		onmouseover="{!c.onHover}" >
 
 		<div class="{!'slds-media slds-listbox__option slds-listbox__option_plain slds-media_small' + (v.isSelected ? ' slds-is-selected' : '') + (v.isFocused ? ' slds-has-focus' : '')}"
 			id="{!globalId + '_option'}"
