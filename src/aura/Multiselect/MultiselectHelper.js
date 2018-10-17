@@ -161,10 +161,11 @@
 		var selections = cmp.get("v.selections");
 		var isRequired = cmp.get("v.required");
 
-		var isValid = selections.length === 0 && isRequired
-		cmp.set("v.hasError", isValid);
-		cmp.set("v.validity", { valid: isValid });
-		return isValid;
+		var hasError = selections.length === 0 && isRequired
+		cmp.set("v.hasError", hasError);
+		cmp.set("v.validity", { valid: !hasError });
+		console.log('multihelper', !hasError);
+		return !hasError;
 	},
 
 	requestOptions: function(cmp, helper) {
