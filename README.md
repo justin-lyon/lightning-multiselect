@@ -1,7 +1,13 @@
 # lightning-multiselect
-A field level Multiselect picklist component for Lightning
+A screen reader compliant, field level Multiselect picklist component for Lightning with keyboard controls.
 
 Requires [`LightningKit/js/promisify.js` Static Resource](https://github.com/jlyon87/lightning-kit)
+
+## Demo
+
+> Mouse and Keyboard controls
+
+![multiselect demo gif](./multiselect-demo.gif)
 
 ## Usage
 
