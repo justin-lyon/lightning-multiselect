@@ -1,0 +1,15 @@
+<aura:component description="MultiselectPill" >
+
+	<aura:attribute required="true" name="label" type="String" />
+	<aura:attribute required="true" name="value" type="String" />
+	<aura:attribute name="isFocused" type="Boolean" default="false" />
+
+	<aura:registerEvent name="remove" type="c:E_Option" />
+
+	<li class="slds-listbox-item"
+		role="presentation" >
+		<lightning:pill
+			label="{!v.label}"
+			onremove="{!c.onRemove}" />
+	</li>
+</aura:component>

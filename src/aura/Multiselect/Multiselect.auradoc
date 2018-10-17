@@ -1,0 +1,25 @@
+<aura:documentation>
+	<aura:description>
+		<p>
+			A single field level component for a Salesforce Multiselect Picklist. Provided the sObjectApiName and fieldApiName, this component will bind selections to your bound value.
+		</p>
+
+		<p>
+			Optional attributes for placeholder and labelHidden.
+		</p>
+	</aura:description>
+	<aura:example
+		name="BasicMultiselect"
+		ref="c:MultiselectExample"
+		label="Basic">
+
+		Basic Usage
+	</aura:example>
+	<aura:example
+		name="MultiMultiselectExample"
+		ref="c:MultiMultiselectExample"
+		label="Multiple Usage">
+
+		Using multiple <code>Multiselect</code>
+	</aura:example>
+</aura:documentation>

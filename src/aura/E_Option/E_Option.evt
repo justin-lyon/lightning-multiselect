@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT" description="Carries html option data" >
+	<aura:attribute name="label" type="String" description="Option text"/>
+	<aura:attribute name="value" type="String" description="Option value" />
+	<aura:attribute name="selected" type="Boolean" description="Option is Selected" />
+</aura:event>

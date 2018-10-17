@@ -1,0 +1,8 @@
+<aura:component >
+	<aura:attribute name="myMultiselectValue" type="String" default="" />
+	<c:Multiselect
+		label="Multi 1"
+		value="{!v.myMultiselectValue}"
+		sObjectApiName="QuickText"
+		fieldApiName="Channel" />
+</aura:component>

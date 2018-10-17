@@ -1,0 +1,106 @@
+<aura:component description="Multiselect"
+	controller="MultiselectAuraService" >
+
+	<ltng:require scripts="{!join(',',
+			$Resource.LightningKit + '/js/promisify.js')}"
+		afterScriptsLoaded="{!c.init}" />
+
+	<aura:attribute required="true" name="sObjectApiName" type="String"
+		description="The sObject API Name of the multiselect picklist." />
+	<aura:attribute required="true" name="fieldApiName" type="String"
+		description="The field API Name of the multiselect picklist." />
+
+	<aura:attribute name="label" type="String"
+		description="The input element label." />
+	<aura:attribute name="value" type="String"
+		description="The bound field value." />
+
+	<aura:attribute name="placeholder" type="String" default="Select an Option"
+		description="Customize the input placeholder text." />
+	<aura:attribute name="labelHidden" type="Boolean" default="false"
+		description="Hide the input label (optional)" />
+
+	<aura:attribute name="isExpanded" type="Boolean" default="false" />
+
+	<aura:attribute name="options" type="Object[]" default="[]" />
+	<aura:attribute name="selections" type="Object[]" default="[]" />
+	<aura:attribute name="activeItem" type="Integer" default="0" />
+	<aura:attribute name="totalItems" type="Integer" default="0" />
+
+	<aura:handler name="click" event="c:E_Option" action="{!c.handleOptionEvent}" />
+	<aura:handler name="remove" event="c:E_Option" action="{!c.handleOptionEvent}" />
+	<aura:handler name="change" value="{!v.value}" action="{!c.onValueChange}" />
+
+	<div aura:id="localRoot"
+		class="{!'slds-form-element' + (v.labelHidden ? ' label-hidden' : '')}"
+		data-global-id="{!globalId}" >
+
+		<label class="slds-form-element__label"
+			for="{!globalId + '_comboboxInput'}">
+			<ui:outputText value="{!v.label}" />
+		</label>
+		<div class="slds-form-element__control"
+			onkeydown="{!c.onKeydown}" >
+			<div class="slds-combobox_container">
+				<div
+					class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+					aria-expanded="{!v.isExpanded}"
+					aria-haspopup="listbox"
+					role="combobox">
+
+					<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+						role="none">
+
+						<input aura:id="comboboxInput"
+							class="slds-input slds-combobox__input slds-combobox__input-value slds-truncate"
+							id="{!globalId + '_comboboxInput'}"
+							type="text"
+							aria-controls="{!globalId + '_listbox'}"
+							aria-activedescendant=""
+							autoComplete="off"
+							role="textbox"
+							placeholder="{!v.placeholder}"
+							readonly="true"
+							onclick="{!c.onInputClick}"
+							value="" />
+					</div>
+
+					<aura:if isTrue="{!v.isExpanded}">
+						<div id="{!globalId + '_listbox'}"
+							class="{!'multi-listbox slds-dropdown slds-dropdown_fluid' + (v.options.length ? ' slds-dropdown_length-' + v.options.length : '5')}"
+							role="listbox">
+							<ul class="slds-listbox slds-listbox_vertical"
+								role="presentation"
+								aria-multiselectable="true">
+
+								<aura:iteration var="opt" items="{!v.options}" >
+									<c:MultiselectItem aura:id="selectItems"
+										label="{!opt.label}"
+										value="{!opt.value}"
+										isSelected="{!opt.selected}"
+										isFocused="{!opt.focused}" />
+								</aura:iteration>
+							</ul>
+						</div>
+					</aura:if>
+
+					<aura:if isTrue="{!v.selections.length > 0}">
+						<div class="slds-pill_container">
+							<ul class="slds-listbox slds-listbox_horizontal"
+								role="listbox"
+								aria-label="Selected Options"
+								aria-orientation="horizontal">
+
+								<aura:iteration var="item" items="{!v.selections}">
+									<c:MultiselectPill
+										label="{!item.label}"
+										value="{!item.value}" />
+								</aura:iteration>
+							</ul>
+						</div>
+					</aura:if>
+				</div>
+			</div>
+		</div>
+	</div>
+</aura:component>

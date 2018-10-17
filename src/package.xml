@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>MultiselectAuraService</members>
+        <members>MultiselectAuraServiceTest</members>
+        <members>Option</members>
+        <members>OptionTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>E_Option</members>
+        <members>MultiMultiselectExample</members>
+        <members>Multiselect</members>
+        <members>MultiselectExample</members>
+        <members>MultiselectItem</members>
+        <members>MultiselectPill</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <version>43.0</version>
+</Package>

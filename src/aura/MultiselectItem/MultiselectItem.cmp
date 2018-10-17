@@ -1,0 +1,32 @@
+<aura:component description="MultiselectItem" >
+	<aura:attribute name="isSelected" type="Boolean" default="false" />
+	<aura:attribute name="isFocused" type="Boolean" default="false" />
+	<aura:attribute required="true" name="label" type="String" />
+	<aura:attribute required="true" name="value" type="String" />
+
+	<aura:registerEvent name="click" type="c:E_Option" />
+
+	<li role="presentation"
+		class="slds-listbox__item"
+		aria-selected="{!v.isSelected}"
+		onclick="{!c.clickItem}">
+
+		<div class="{!'slds-media slds-listbox__option slds-listbox__option_plain slds-media_small' + (v.isSelected ? ' slds-is-selected' : '') + (v.isFocused ? ' slds-has-focus' : '')}"
+			id="{!globalId + '_option'}"
+			role="option">
+			<span class="slds-media__figure slds-listbox__option-icon">
+				<aura:if isTrue="{!v.isSelected}">
+					<lightning:icon size="x-small" iconName="utility:check" />
+				</aura:if>
+			</span>
+			<span class="slds-media__body">
+				<span class="slds-truncate" title="{!v.label}">
+					<span class="{!'slds-assistive-text' + (!v.isFocused ? '' : ' slds-hidden')}">
+						Current Selection:
+					</span>
+					{!v.label}
+				</span>
+			</span>
+		</div>
+	</li>
+</aura:component>
