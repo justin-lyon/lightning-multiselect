@@ -9,10 +9,14 @@
 			var handler = function(event) {
 				var containingMulti = event.target ? event.target.closest('.cMultiselect') : null;
 				var innerMulti = event.target ? event.target.querySelector('.cMultiselect') : null;
+				var allMulti = Array.from(document.querySelectorAll('.cMultiselect'));
+				var hasManyMulti = allMulti.length && allMulti.length > 1;
 
 				if(cmp.isValid()) {
-					if(!containingMulti && innerMulti
-						|| containingMulti && containingMulti.dataset.globalId !== globalId) {
+
+					if(!containingMulti && innerMulti && hasManyMulti
+						|| containingMulti && containingMulti.dataset.globalId !== globalId
+						|| !containingMulti && !innerMulti) {
 
 						helper.collapseListBox(cmp, helper);
 					}
