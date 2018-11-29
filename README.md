@@ -22,3 +22,9 @@ Requires [`LightningKit/js/promisify.js` Static Resource](https://github.com/jly
     fieldApiName="Channel" />
 </aura:component>
 ```
+
+## Deploy to Salesforce
+
+Using the [githubsfdeploy app](https://github.com/afawcett/githubsfdeploy), add this code to your Salesfore Org.
+
+<a target="_blank" rel="noopener noreferrer" href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/jlyon87/lightning-multiselect"><img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png" alt="Button" style="max-width:100%;"></a>
